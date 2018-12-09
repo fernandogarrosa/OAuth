@@ -1,0 +1,17 @@
+c:\users\fernando\source\repos\ClaimBNB\ClaimBNB\bin\Debug\netcoreapp2.1\ClaimBNB.deps.json
+c:\users\fernando\source\repos\ClaimBNB\ClaimBNB\bin\Debug\netcoreapp2.1\ClaimBNB.runtimeconfig.json
+c:\users\fernando\source\repos\ClaimBNB\ClaimBNB\bin\Debug\netcoreapp2.1\ClaimBNB.runtimeconfig.dev.json
+c:\users\fernando\source\repos\ClaimBNB\ClaimBNB\bin\Debug\netcoreapp2.1\ClaimBNB.dll
+c:\users\fernando\source\repos\ClaimBNB\ClaimBNB\bin\Debug\netcoreapp2.1\ClaimBNB.pdb
+c:\users\fernando\source\repos\ClaimBNB\ClaimBNB\obj\Debug\netcoreapp2.1\ClaimBNB.csprojAssemblyReference.cache
+c:\users\fernando\source\repos\ClaimBNB\ClaimBNB\obj\Debug\netcoreapp2.1\ClaimBNB.csproj.CoreCompileInputs.cache
+c:\users\fernando\source\repos\ClaimBNB\ClaimBNB\obj\Debug\netcoreapp2.1\ClaimBNB.RazorAssemblyInfo.cache
+c:\users\fernando\source\repos\ClaimBNB\ClaimBNB\obj\Debug\netcoreapp2.1\ClaimBNB.RazorAssemblyInfo.cs
+c:\users\fernando\source\repos\ClaimBNB\ClaimBNB\obj\Debug\netcoreapp2.1\ClaimBNB.AssemblyInfoInputs.cache
+c:\users\fernando\source\repos\ClaimBNB\ClaimBNB\obj\Debug\netcoreapp2.1\ClaimBNB.AssemblyInfo.cs
+c:\users\fernando\source\repos\ClaimBNB\ClaimBNB\obj\Debug\netcoreapp2.1\ClaimBNB.RazorTargetAssemblyInfo.cache
+c:\users\fernando\source\repos\ClaimBNB\ClaimBNB\obj\Debug\netcoreapp2.1\ClaimBNB.dll
+c:\users\fernando\source\repos\ClaimBNB\ClaimBNB\obj\Debug\netcoreapp2.1\ClaimBNB.pdb
+C:\Users\Fernando\source\repos\ClaimBNB\ClaimBNB\bin\Debug\netcoreapp2.1\Data.dll
+C:\Users\Fernando\source\repos\ClaimBNB\ClaimBNB\bin\Debug\netcoreapp2.1\Data.pdb
+C:\Users\Fernando\source\repos\ClaimBNB\ClaimBNB\obj\Debug\netcoreapp2.1\ClaimBNB.csproj.CopyComplete

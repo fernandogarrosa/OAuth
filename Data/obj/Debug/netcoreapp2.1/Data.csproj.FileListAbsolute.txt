@@ -1,0 +1,14 @@
+c:\Users\Fernando\source\repos\ClaimBNB\Data\bin\Debug\netcoreapp2.1\Data.deps.json
+c:\Users\Fernando\source\repos\ClaimBNB\Data\bin\Debug\netcoreapp2.1\Data.dll
+c:\Users\Fernando\source\repos\ClaimBNB\Data\obj\Debug\netcoreapp2.1\Data.csprojAssemblyReference.cache
+c:\Users\Fernando\source\repos\ClaimBNB\Data\obj\Debug\netcoreapp2.1\Data.csproj.CoreCompileInputs.cache
+c:\Users\Fernando\source\repos\ClaimBNB\Data\obj\Debug\netcoreapp2.1\Data.AssemblyInfoInputs.cache
+c:\Users\Fernando\source\repos\ClaimBNB\Data\obj\Debug\netcoreapp2.1\Data.AssemblyInfo.cs
+C:\Users\Fernando\source\repos\ClaimBNB\Data\bin\Debug\netcoreapp2.1\Data.pdb
+C:\Users\Fernando\source\repos\ClaimBNB\Data\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Fernando\source\repos\ClaimBNB\Data\bin\Debug\netcoreapp2.1\Microsoft.Extensions.Identity.Stores.xml
+C:\Users\Fernando\source\repos\ClaimBNB\Data\obj\Debug\netcoreapp2.1\Data.csproj.CopyComplete
+C:\Users\Fernando\source\repos\ClaimBNB\Data\obj\Debug\netcoreapp2.1\Data.dll
+C:\Users\Fernando\source\repos\ClaimBNB\Data\obj\Debug\netcoreapp2.1\Data.pdb
+c:\Users\Fernando\source\repos\ClaimBNB\Data\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+c:\Users\Fernando\source\repos\ClaimBNB\Data\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml
