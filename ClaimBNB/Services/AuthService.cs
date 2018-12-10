@@ -4,9 +4,14 @@ using Data.Models;
 using Data.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace ClaimBNB.Services
@@ -16,12 +21,14 @@ namespace ClaimBNB.Services
         private readonly IMapper mapper;
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
+        private readonly IConfiguration configuration;
 
-        public AuthService(IMapper mapper, UserManager<User> userManager, SignInManager<User> signInManager)
+        public AuthService(IMapper mapper, IConfiguration configuration, UserManager<User> userManager, SignInManager<User> signInManager)
         {
             this.mapper = mapper;
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.configuration = configuration;
         }
 
         public async Task<UserForListDto> RegisterUser(UserForRegisterDto userForRegisterDto)
@@ -33,15 +40,6 @@ namespace ClaimBNB.Services
                return  mapper.Map<UserForListDto>(userToCreate);
 
             return null;
-        }
-
-        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
-        {
-            using (var hmac = new System.Security.Cryptography.HMACSHA512())
-            {
-                passwordSalt = hmac.Key;
-                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-            }
         }
 
         public async Task<UserForListDto> Login(string userName, string password)
@@ -56,25 +54,41 @@ namespace ClaimBNB.Services
                 UserForListDto userForListDto = mapper.Map<UserForListDto>(appUser);
 
                 return userForListDto;
-
             }
-
             return null;
         }
 
-        private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
+        public async Task<string> GenerateJwtToken(UserForListDto userForListDto)
         {
-            using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
+            var claims = new List<Claim>
             {
-                var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                new Claim(ClaimTypes.NameIdentifier, userForListDto.Id.ToString()),
+                new Claim(ClaimTypes.Name, userForListDto.UserName)
+            };
 
-                for (int i = 0; i < computedHash.Length; i++)
-                {
-                    if (computedHash[i] != passwordHash[i]) return false;
-                }
-            }
+            User user = mapper.Map<User>(userForListDto);
+            var roles = await userManager.GetRolesAsync(user);
 
-            return true;
-        }        
+            foreach(string role in roles)            
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.
+                                GetBytes(configuration.GetSection("AppSettings:Token").Value));
+
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+            var tokenDescription = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.Now.AddDays(1),
+                SigningCredentials = creds
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var token = tokenHandler.CreateToken(tokenDescription);
+
+            return tokenHandler.WriteToken(token);
+        }       
     }
 }

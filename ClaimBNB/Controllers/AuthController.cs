@@ -58,35 +58,9 @@ namespace ClaimBNB.Controllers
 
             return Ok(new
             {
-                token = GenerateJwtToken(userFromRepo),
+                token = authService.GenerateJwtToken(userFromRepo),
                 user = userFromRepo
             });
-        }
-
-        public string GenerateJwtToken(UserForListDto user)
-        {
-            var claims = new[]
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.UserName)
-            };
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8.
-                                GetBytes(config.GetSection("AppSettings:Token").Value));
-
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
-
-            var tokenDescription = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddDays(1),
-                SigningCredentials = creds
-            };
-
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var token = tokenHandler.CreateToken(tokenDescription);
-
-            return tokenHandler.WriteToken(token);
-        }
+        }        
     }
 }

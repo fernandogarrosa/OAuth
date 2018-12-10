@@ -9,6 +9,7 @@ namespace ClaimBNB.Services
     public interface IAuthService
     {
         Task<UserForListDto> RegisterUser(UserForRegisterDto userForRegisterDto);
-        Task<UserForListDto> Login(string userName, string password);      
+        Task<UserForListDto> Login(string userName, string password);
+        Task<string> GenerateJwtToken(UserForListDto user);
     }
 }

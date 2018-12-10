@@ -12,6 +12,7 @@ namespace ClaimBNB.Controllers
     public class ValuesController : ControllerBase
     {
         // GET api/values
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
@@ -19,6 +20,7 @@ namespace ClaimBNB.Controllers
         }
 
         // GET api/values/5
+        [Authorize(Roles = "Lawyer")]
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {

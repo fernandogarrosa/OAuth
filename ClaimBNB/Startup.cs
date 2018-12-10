@@ -58,26 +58,29 @@ namespace ClaimBNB
                                         };
                                     });
 
-            services.AddMvc(options =>
-                {
-                    var policy = new AuthorizationPolicyBuilder().
-                                    RequireAuthenticatedUser().
-                                    Build();
-
-                    options.Filters.Add(new AuthorizeFilter(policy));
-                }
+            services.AddMvc(
             ).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            //options =>
+            //{
+            //    var policy = new AuthorizationPolicyBuilder().
+            //                    RequireAuthenticatedUser().
+            //                    Build();
+
+            //    options.Filters.Add(new AuthorizeFilter(policy));
+            //}
 
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IRepository<User>, Repository<User>>();
-            services.AddTransient<IUserService, UserService>(); 
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<Seed>();
 
             services.AddAutoMapper();            
             services.AddCors();            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, Seed seeder)
         {
             if (env.IsDevelopment())
             {
@@ -98,7 +101,8 @@ namespace ClaimBNB
                 var context = serviceScope.ServiceProvider.GetRequiredService<DataContext>();
                 context.Database.EnsureDeletedAsync().Wait();
                 context.Database.EnsureCreatedAsync().Wait();
-               // context.Initialize();
+                // context.Initialize();
+                seeder.SeedUsers();
             }
         }
     }
